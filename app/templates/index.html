@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Companhias Abertas</title>
+</head>
+<body>
+    <h1>Companhias Abertas</h1>
+    
+    <a href="/dashboard_raca">Dashboard Geral de Raça</a> |
+    <a href="/dashboard_genero">Dashboard Geral de Gênero</a> |
+    <a href="/dashboard_faixa_etaria">Dashboard Geral de Faixa Etária</a>
+    
+    <!-- Formulário de pesquisa por DENOM_SOCIAL -->
+    <form method="GET" action="/">
+        <label for="DENOM_SOCIAL">Pesquisar DENOM_SOCIAL:</label>
+        <input type="text" id="DENOM_SOCIAL" name="DENOM_SOCIAL" value="{{ DENOM_SOCIAL_pesquisa }}">
+        <button type="submit">Pesquisar</button>
+    </form>
+
+    <!-- Tabela com os resultados -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>CNPJ</th>
+                <th>Nome</th>
+                <th>Situação</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if companhias %}
+                {% for companhia in companhias %}
+                <tr>
+                    <td>{{ companhia[0] }}</td>
+                    <td>{{ companhia[1] }}</td>
+                    <td>{{ companhia[2] }}</td>
+                    <td><a href="{{ url_for('editar_companhia', DENOM_SOCIAL=companhia[1].replace(' ', '-').replace('/', '-')) }}">Editar</a></td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="5">Nenhuma companhia encontrada.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</body>
+</html>

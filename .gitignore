@@ -1,0 +1,7 @@
+*.pyc
+__pycache__/
+*.sqlite
+*.db
+extracted_files/
+cad_cia_aberta.csv
+fre_cia_aberta_2024.zip

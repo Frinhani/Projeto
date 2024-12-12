@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de Editação de Companhia</title>
+</head>
+<body>
+    <h1>Editar Companhia</h1>
+    <!-- Tabela com os dados da companhia -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>CNPJ</th>
+                <th>Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ companhia[0] }}</td>
+                <td>{{ companhia[1] }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <!-- Formulário para editar o nome da companhia -->
+    <form method="POST">
+        <label for="denom_social">Nome da Companhia:</label>
+        <input type="text" id="denom_social" name="denom_social" value="{{ companhia[1] }}" required>
+        <button type="submit">Salvar Alterações</button>
+    </form>
+    
+    <br>
+    <a href="/">Voltar para a lista de companhias</a>
+</body>
+</html>
